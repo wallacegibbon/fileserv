@@ -1,0 +1,12 @@
+{
+  "name": "fileserv",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "pm2 start pm2.prod.json --no-daemon",
+    "dev": "node main.js"
+  },
+  "dependencies": {
+    "koa": "^2.5.1",
+    "koa-router": "^7.4.0"
+  }
+}

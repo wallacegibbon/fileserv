@@ -1,0 +1,16 @@
+{
+  "name": "fileserv",
+  "script": "main.js",
+  "cwd": "./",
+  "exec_mode": "fork",
+  "watch": true,
+  "ignore_watch": [
+    "upload"
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "engines": {
+    "node": ">=8.0"
+  }
+}
