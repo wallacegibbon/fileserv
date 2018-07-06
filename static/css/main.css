@@ -6,6 +6,7 @@ body {
 
 svg {
   width: 20px;
+  height: 20px;
 }
 
 .container {
@@ -34,22 +35,24 @@ svg {
 }
 
 .submitBtn {
+  line-height: 1;
   position: relative;
 }
 
-.submitBtn .btn {
+.submitBtn .btn, .submitBtn .icon {
   position: absolute;
-  right: 0;
-  bottom: 0;
+}
+
+.submitBtn .btn {
   opacity: 0;
   z-index: 1;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+  right: -2px;
+  bottom: 1px;
 }
 
 .submitBtn .icon {
-  position: absolute;
-  right: 0;
-  bottom: 0;
   z-index: 0;
+  right: 0;
 }
