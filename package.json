@@ -6,7 +6,11 @@
     "dev": "node main.js"
   },
   "dependencies": {
+    "ejs": "^2.6.1",
     "koa": "^2.5.1",
-    "koa-router": "^7.4.0"
+    "koa-body": "^4.0.4",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "log4js": "^2.10.0"
   }
 }

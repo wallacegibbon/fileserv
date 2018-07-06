@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <form class="upload-form" action="./upload" method="POST" enctype="multipart/form-data">
+      <input class="file" type="file" name="file" />
+      <input class="submit" type="submit" value="upload" />
+    </form>
+<% for (var f of files) { %>
+    <div class="uploaded-file">
+      <a class="file" href="<%- '/files/' + f %>"><%= f %></a>
+      <a class="del" href="<%- './remove?name=' + encodeURI(f) %>">R</a>
+    </div>
+<% } %>
+  </div>
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

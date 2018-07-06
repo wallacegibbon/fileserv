@@ -1,3 +1,6 @@
 node_modules/
+log/
+files/
+package-lock.json
 *.swp
 *~
