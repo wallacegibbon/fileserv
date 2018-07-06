@@ -11,12 +11,15 @@
   <div class="container">
     <form class="upload-form" action="./upload" method="POST" enctype="multipart/form-data">
       <input class="file" type="file" name="file" />
-      <input class="submit" type="submit" value="upload" />
+      <div class="submitBtn">
+        <input class="btn" type="submit" value="upload" />
+        <div class="icon"><%include uploadIcon.ejs %></div>
+      </div>
     </form>
 <% for (var f of files) { %>
     <div class="uploaded-file">
       <a class="file" href="<%- '/files/' + f %>"><%= f %></a>
-      <a class="del" href="<%- './remove?name=' + encodeURI(f) %>">R</a>
+      <a class="del" href="<%- './remove?name=' + encodeURI(f) %>"><%include deleteIcon.ejs %></a>
     </div>
 <% } %>
   </div>

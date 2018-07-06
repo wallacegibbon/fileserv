@@ -29,8 +29,8 @@ app.use(static('static'))
 
 
 async function start() {
-  console.log(`Ensuring target upload directory ${config.uploadDir}...`)
   await utils.ensureDir(config.uploadDir)
+
   console.log(`Will listen port ${config.port}`)
   app.listen(config.port, e => e && console.error('**Err:', e))  
 }
