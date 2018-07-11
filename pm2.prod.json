@@ -1,6 +1,6 @@
 {
   "name": "fileserv",
-  "script": "main.js",
+  "script": "./lib/main.js",
   "cwd": "./",
   "exec_mode": "fork",
   "watch": true,

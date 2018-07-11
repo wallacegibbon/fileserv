@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "pm2 start pm2.prod.json --no-daemon",
-    "dev": "node main.js"
+    "dev": "node ./lib/main.js"
   },
   "dependencies": {
     "ejs": "^2.6.1",
