@@ -4,18 +4,19 @@ const ejs = require('ejs')
 const utils = require('./utils')
 const fs = require('fs')
 const path = require('path')
+const static = require('./static')
 
 function redirect(ctx, targetUrl) {
   ctx.redirect(config.urlPrefix + targetUrl)
 }
-
-router.get('/', async (ctx) => redirect(ctx, '/index'))
 
 router.get('/index', async (ctx, next) => {
   const params = { files: await utils.readdir(config.uploadDir) }
   ctx.body = await ejs.renderFile(__dirname + '/template/index.ejs', params, { async: true })
   await next()
 })
+
+router.get('/', async (ctx) => redirect(ctx, '/index'))
 
 router.post('/upload', async (ctx, next) => {
   const file = ctx.request.files.file
@@ -41,30 +42,7 @@ router.all('/remove', async (ctx, next) => {
   redirect(ctx, '/index')
 })
 
-function contentTypeOf(pathname) {
-  if (pathname.endsWith('.js')) {
-    return 'text/javascript; charset=utf-8'
-  } else if (pathname.endsWith('.css')) {
-    return 'text/css; charset=utf-8'
-  } else {
-    return 'application/download'
-  }
-}
-
-function staticHandler(localPath) {
-  return async (ctx, next) => {
-    await next()
-    const fpath = path.join(localPath, ctx.params.dname || '', ctx.params.fname)
-    ctx.set('Content-Type', contentTypeOf(fpath))
-    try {
-      ctx.body = fs.createReadStream(fpath)
-    } catch (e) {
-      ctx.status = 404
-    }
-  }
-}
-
-router.all('/web/:dname/:fname', staticHandler('./web'))
-router.all('/files/:fname', staticHandler('./files'))
+router.get('/web/:dname/:fname', static('./web'))
+router.get('/files/:fname', static('./files'))
 
 module.exports = router.routes()
