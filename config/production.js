@@ -5,5 +5,5 @@ module.exports = {
   password: '666',
   urlPrefix: '/fileserv',
   port: 8888,
-  uploadDir: path.join(__dirname, '/../static/files'),
+  uploadDir: path.join(__dirname, '../files'),
 }

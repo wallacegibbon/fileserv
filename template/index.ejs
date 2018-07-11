@@ -4,7 +4,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="./web/css/main.css">
 </head>
 
 <body>
@@ -18,12 +18,11 @@
     </form>
 <% for (var f of files) { %>
     <div class="uploaded-file">
-      <a class="file" href="<%- '/files/' + f %>"><%= f %></a>
+      <a class="file" href="<%- './files/' + f %>"><%= f %></a>
       <a class="del" href="<%- './remove?name=' + encodeURI(f) %>"><%include deleteIcon.ejs %></a>
     </div>
 <% } %>
   </div>
-  <script src="/js/main.js"></script>
 </body>
 
 </html>

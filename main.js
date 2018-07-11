@@ -1,5 +1,4 @@
 const Koa = require('koa')
-const static = require('koa-static')
 const koaBody = require('koa-body')
 const config = require('./config')
 const router = require('./router')
@@ -50,14 +49,12 @@ app.use(async (ctx, next) => {
 
 app.use(koaBody({ multipart: true }))
 app.use(router)
-app.use(static('static'))
-
 
 async function start() {
   await utils.ensureDir(config.uploadDir)
 
   console.log(`Will listen port ${config.port}`)
-  app.listen(config.port, e => e && console.error('**Err:', e))  
+  app.listen(config.port, e => e && console.error('**Err:', e))
 }
 
 start().catch(console.error)

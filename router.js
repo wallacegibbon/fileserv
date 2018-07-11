@@ -41,4 +41,41 @@ router.all('/remove', async (ctx, next) => {
   redirect(ctx, '/index')
 })
 
+function contentTypeOf(pathname) {
+  if (pathname.endsWith('.js')) {
+    return 'text/javascript; charset=utf-8'
+  } else if (pathname.endsWith('.css')) {
+    return 'text/css; charset=utf-8'
+  } else {
+    return 'application/download'
+  }
+}
+
+async function staticHandler(ctx, next) {
+  await next()
+  const fpath = path.join('./web', ctx.params.dname || '', ctx.params.fname)
+  ctx.set('Content-Type', contentTypeOf(fpath))
+  try {
+    ctx.body = fs.createReadStream(fpath)
+  } catch (e) {
+    ctx.status = 404
+  }
+}
+
+function staticHandler(localPath) {
+  return async (ctx, next) => {
+    await next()
+    const fpath = path.join(localPath, ctx.params.dname || '', ctx.params.fname)
+    ctx.set('Content-Type', contentTypeOf(fpath))
+    try {
+      ctx.body = fs.createReadStream(fpath)
+    } catch (e) {
+      ctx.status = 404
+    }
+  }
+}
+
+router.all('/web/:dname/:fname', staticHandler('./web'))
+router.all('/files/:fname', staticHandler('./files'))
+
 module.exports = router.routes()
