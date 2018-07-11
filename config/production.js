@@ -1,5 +1,9 @@
+const path = require('path')
+
 module.exports = {
+  username: 'admin',
+  password: '666',
   urlPrefix: '/fileserv',
   port: 8888,
-  uploadDir: __dirname + '/../static/files',
+  uploadDir: path.join(__dirname, '/../static/files'),
 }

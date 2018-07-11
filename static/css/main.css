@@ -7,6 +7,17 @@ body {
 svg {
   width: 20px;
   height: 20px;
+  fill: #444;
+}
+
+svg:hover {
+  fill: black;
+}
+
+svg:active {
+  width: 18px;
+  height: 18px;
+  margin: 1px;
 }
 
 .container {
@@ -55,4 +66,14 @@ svg {
 .submitBtn .icon {
   z-index: 0;
   right: 0;
+}
+
+.submitBtn:hover .icon svg {
+  fill: black;
+}
+
+.submitBtn:active .icon svg {
+  width: 18px;
+  height: 18px;
+  margin: 1px;
 }

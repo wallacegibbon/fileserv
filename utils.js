@@ -32,10 +32,15 @@ async function ensureDir(dirname) {
   }
 }
 
+function decodeBase64(string) {
+  return new Buffer(string, 'base64').toString()
+}
+
 module.exports = {
   getRequestIp,
   readdir,
   exists,
   unlink,
   ensureDir,
+  decodeBase64,
 }
