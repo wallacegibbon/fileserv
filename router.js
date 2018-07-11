@@ -51,17 +51,6 @@ function contentTypeOf(pathname) {
   }
 }
 
-async function staticHandler(ctx, next) {
-  await next()
-  const fpath = path.join('./web', ctx.params.dname || '', ctx.params.fname)
-  ctx.set('Content-Type', contentTypeOf(fpath))
-  try {
-    ctx.body = fs.createReadStream(fpath)
-  } catch (e) {
-    ctx.status = 404
-  }
-}
-
 function staticHandler(localPath) {
   return async (ctx, next) => {
     await next()
